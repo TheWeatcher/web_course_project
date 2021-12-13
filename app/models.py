@@ -69,7 +69,7 @@ class Game(models.Model):
     category = models.ForeignKey(Category, related_name='games', verbose_name = "Жанр")
     name = models.CharField(max_length=200, db_index=True, verbose_name = "Название")
     slug = models.SlugField(max_length=200, db_index=True, verbose_name = "Слаг")
-    image = models.ImageField(upload_to='games/%Y/%m/%d', blank=True, verbose_name = "Изображение")
+    image = models.FileField(upload_to='games/%Y/%m/%d', blank=True, verbose_name = "Изображение")
     description = models.TextField(blank=True, verbose_name = "Описание")
     price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name = "Цена")
     stock = models.PositiveIntegerField(verbose_name = "Количество")
