@@ -1,0 +1,15 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<br />
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Заказ оплачен (Только: True или False) </label><br>
+            <input type="text" name="paid" value="{{order.paid}}" />
+        </p>
+       
+        <input type="submit" value="Сохранить" >
+    </form>
+
+{% endblock %}

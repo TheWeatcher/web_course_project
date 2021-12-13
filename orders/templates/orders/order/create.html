@@ -1,0 +1,29 @@
+﻿{% extends "app/layout.html" %}
+ 
+{% block title %}
+    Оформление заказа
+{% endblock %}
+ 
+{% block content %}
+    <h1>Оформление заказа</h1>
+ 
+    <div class="order-info">
+        <h3>Ваш заказ</h3>
+        <ul>
+            {% for item in cart %}
+                <li>
+                    {{ item.quantity }} копий {{ item.game.name }} по {{item.game.price}} руб.
+                    <br />
+                    <span>Итого по игре {{ item.game.name }}:{{ item.total_price }} руб.</span>
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Итого: {{ cart.get_total_price }} руб.</p>
+    </div>
+ 
+    <form action="." method="post" class="order-form">
+        {{ form.as_p }}
+        <p><input type="submit" value="Разместить заказ"></p>
+        {% csrf_token %}
+    </form>
+{% endblock %}

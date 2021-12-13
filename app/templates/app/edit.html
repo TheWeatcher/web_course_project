@@ -1,0 +1,15 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<br />
+<form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Пользователь персонал (Только: True или False) </label><br>
+           <input type="text" name="is_staff" value="{{user.is_staff}}" />
+        </p>
+       
+        <input type="submit" value="Сохранить" >
+    </form>
+
+{% endblock %}

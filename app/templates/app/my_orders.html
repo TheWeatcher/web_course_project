@@ -1,0 +1,19 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+<h2>Ваши заказы</h2> <br />
+
+{% for item in game_ordered %}
+<hr />
+<div class=" ">
+    <h2> Заказ №{{item.order_id}}</h2>
+    <h4> Название игры: {{item.game}}</h4>
+    <h4> Цена: {{item.price}} руб.</h4>
+    <h4> Количество: {{item.quantity}}</h4>
+    
+   
+</div>
+
+{% endfor %}
+
+{% endblock %}

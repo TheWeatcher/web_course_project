@@ -1,0 +1,22 @@
+﻿
+{% extends "app/layout.html" %}
+{% load static %}
+ 
+{% block title %}
+  {% if category %}{{ category.title }}{% else %}Игры{% endif %}
+{% endblock %}
+ 
+{% block content %}
+    <div class="game-detail">
+    <img style="width:600px" src="{% if game.image %}{{ game.image.url }}{% else %}{% static 'app/img/no_image.png' %}{% endif %}">
+    <h1>{{ game.name }}</h1>
+    <h2><a href="{{ game.category.get_absolute_url }}">{{ game.category }}</a></h2>
+    <p class="price">{{ game.price }} руб.</p>
+    <form action="{% url "cart:cart_add" game.id %}" method="post">
+        {{ cart_game_form }}
+        {% csrf_token %}
+        <input type="submit" value="Добавить в корзину">
+</form>
+      {{ game.description|linebreaks }}
+  </div>
+{% endblock %}
