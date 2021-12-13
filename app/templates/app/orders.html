@@ -3,7 +3,7 @@
 <br />
 <h2>Заказы</h2>
     <table>
-        <thead><th>Id</th><th>Название игры</th><th>Цена</th>><th>Дата создания</th><th>Количество</th><th>Заказ оплачен</th></thead>
+        <thead><th>Id</th><th>Название игры</th><th>Цена</th>><th>Дата создания</th><th>Количество</th><th>Фамилия покупателя</th><th>E-mail</th><th>Заказ оплачен</th></thead>
         {% for g  in game_ordered  %}
         
         <tr style="color:red; text-align:center; text-shadow:black 0px 0px 3px;">
@@ -12,6 +12,8 @@
             <td>{{ g.price }}</td>
             <td>{{ g.created }}</td>
             <td>{{ g.quantity }}</td>
+            <td>{{ g.first_name }}</td>
+            <td>{{ g.email }}</td>
             <td>{{ g.paid }}</td>
             <td><a href="{% url 'edit_order' id=g.order_id %}">Настройка статуса заказа</a>
         </tr>

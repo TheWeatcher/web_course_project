@@ -285,7 +285,7 @@ def orders(request):
 
     
     o = Order.objects.all()
-    game_ordered = OrderItem.objects.raw('SELECT orders_orderitem.order_id, order_id, game_id, price, created, quantity, orders_order.id,  paid FROM orders_orderitem JOIN orders_order ON orders_orderitem.order_id = orders_order.id')
+    game_ordered = OrderItem.objects.raw('SELECT orders_orderitem.order_id, order_id, game_id, price, created, quantity, orders_order.id,  paid, first_name, email FROM orders_orderitem JOIN orders_order ON orders_orderitem.order_id = orders_order.id')
     assert isinstance(request, HttpRequest)
     return render(request,'app/orders.html', {'title':'Заказы','game_ordered': game_ordered, 'orders': orders,}
             )
